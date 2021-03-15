@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascript</title>
+    <link rel="stylesheet" href="../CSS/page-style.css">
+    <script src="../javascript/myfirstjava.js"></script>
+
+   
+</head>
+<body>
+
+    <h2>Vad kan jag göra med Javascript?</h2>
+    <p id="test">Du kan göra en del?</p>
+
+    <button type="button" onclick='document.getElementById("test").innerHTML = "Titta jag kan ändra mig"'>Klicka här!</button>
+   <br><br>
+
+   <p id="bigger"> Jag är en liten text som kan bli stor!</p>
+   <button type="button" onclick="document.getElementById('bigger').style.fontSize='35px'">Klicka här!</button>
+<br><br>
+    <div id="first"></div>
+   <script>
+   document.getElementById('first').innerHTML ='Hej Java!';  
+   </script>
+
+ <!-- Skript från annan JS källa-->
+    <p id="demo2">Hejsan</p>
+   <button type="button" onclick="myfunction()">Test</button>
+
+   <p id="counter" style="font-weight: bold; font-size: 30px;" ></p>
+   <script>
+       document.getElementById('counter').innerHTML = 2 + 5 + 3;
+   </script>
+
+   <p id="räknare"></p>
+
+   <script>
+       var x, y, z;
+       x = 5;
+       y = 10;
+       z = x + y;
+
+       document.getElementById("räknare").innerHTML = 
+       "Värdet av x (5) och y  (10) är " + z + ".";
+   </script>
+
+<button class="button" onclick="MySecondFunction()">Klicka här!</button>
+<p id="a"></p>
+<p id="b"></p>
+<p>Nedanstående klubbar finns i listan:</p>
+<p id="klubb"></p>
+<p id="klubbar-sorterade"></p>
+<script>
+    // Create an array
+    const klubbar = ['Malmö FF ', 'Helsingborgs IF ', 'Trelleborgs FF ', 'Landskrona BOIS '];
+    //Byt ut i listan
+    klubbar[2] = 'Kristianstads FF';
+    //Lägga till i listan
+    klubbar.push('Ängelholms FF');
+    klubbar.sort();
+
+    document.getElementById('klubb').innerHTML = klubbar;
+</script>
+
+<p id="third"> </p>
+
+<script>// Nedan är min tredje funktion
+
+function MyThirdFunction(n1, n2) {
+    return n1 * n2;
+}
+document.getElementById('third').innerHTML = MyThirdFunction(2, 4);</script>
+
+<p id="mile"></p>
+<script>
+//Min egna funktion som räknar ut miles till km
+
+function MileToKilometers(distance) {
+    return distance =  1.609344 * distance;
+}
+document.getElementById('mile').innerHTML = '2 miles omräknat i kilometer är: ' + MileToKilometers(2) + ' km';
+</script>
+
+<p id="personinfo" style="color: red; text-align: right;"></p> <br>
+<p id="namnoefternamn" style="text-align: right;"></p>
+<p id="beskrivning1" style="text-align: right;"></p>
+<script>
+var person = {
+    namn: 'Sebastian',
+    efternamn: 'Persson',
+    längd: 185,
+    vikt: 75,
+    Intresse: 'Programmering',
+    fullname: function () {
+        return this.namn + ' ' + this.efternamn     
+    },
+    beskrivning: function () {
+        return this.längd + 'cm'
+    }
+};
+
+document.getElementById('personinfo').innerHTML = 
+person.namn +' ' + person.efternamn + ' heter jag och är ' + person.längd + 'cm och väger '
+ + person.vikt + 'kg' + ' Mitt favoritintresse är: ' + person.Intresse + '.';
+ 
+ document.getElementById('namnoefternamn').innerHTML = person.fullname();
+ document.getElementById('beskrivning1').innerHTML = person.beskrivning();
+</script>
+
+<!-- Ändrar innehållet nedan--> <button onclick="document.getElementById('datum').innerHTML=Date()">Vill du se datumet?</button>
+<!-- Ändrar egna "boxen"--> <button onclick="this.innerHTML = Date()">Ändrar denna knapp</button>
+<!--Kallar på funktionen--> <button onclick="displayDate()" style="float: right;"> Tiden är? </button>
+
+<script>
+    function displayDate() {
+        document.getElementById('date').innerHTML = Date();
+    }
+</script>
+<p id='datum'></p>
+<p id="date" style="text-align: right; color: green;"></p>
+
+<div onmouseover="this.style.backgroundColor='red'">My div.</div>
+
+<p id="person"></p>
+<p id="ord"></p>
+<script>
+    var answer1 = 'Mitt namn är';
+    var answer2 = "Sebastian Persson";
+    var answer3 = 'Men kallas för "Sebbe"';
+    
+    document.getElementById('person').innerHTML = answer1 + "<br>" + answer2 + "<br>" + answer3;
+    
+</script>
+
+<p id="Sebastian"></p>
+<p id="Sebbe"></p>
+
+<p id="slice"> </p>
+<script>
+var öl = "öl är gott";
+    var längd = öl.length;
+    document.getElementById('ord').innerHTML = 'Meningen "öl är gott" innehåller ' + längd + ' bokstäver'
+
+var str1 = 'Kan du hitta mig "Sebastian" i denna mening?';
+var first = str1.indexOf('Sebastian')
+var find = str1.search('Sebastian')
+
+document.getElementById('Sebastian').innerHTML = 'Sebastian ligger på position: ' + first
+document.getElementById('Sebbe').innerHTML = 'Sök för position ' + find
+
+var bit = str1.slice(18, 27)
+
+document.getElementById('slice').innerHTML = 'Följande är slicead: ' + bit
+</script>
+
+<h2> Ändra "Helsingborgs IF är bäst" till "Malmö FF</h2>
+<button onclick="document.getElementById('replace1').innerHTML = byte">Klicka på mig </button>
+<p id='replace1' style="font-size: 30px; color: lightblue; font-weight: bolder; "></p>
+<script>
+var helsingborg = 'Helsingborg är bäst';
+var byte = helsingborg.replace('Helsingborg', 'Malmö FF');
+
+var hej = 'Hallå'
+var namn = 'Boje'
+var merge = hej.concat(' ', namn)
+</script>
+<button style="width: 200px;" onclick="this.innerHTML = merge">Hej Kaj</button>
+<br><br><br>
+<p id="loop1"></p>
+<br><br><br>
+<p id="loop2"></p>
+<script>
+var bilmärken = ['Renault', 'Volvo', 'Volkswagen', 'BMW', 'Audi', 'Opel', 'Skoda', 'Fiat', 'Seat', 'Tesla'];
+totalt = bilmärken.length
+text = '';
+var i;
+var b;
+
+for (i in bilmärken) {
+    text += bilmärken[i] + '<br>'
+}
+document.getElementById('loop1').innerHTML = text + 'Totalt finns ' + totalt + ' objekt i listan';
+
+text = '';
+for(j=0; j < bilmärken.length; j++) {
+    text += '<li>' + bilmärken[j] + '</li>' + '<br>'
+}
+document.getElementById('loop2').innerHTML = text;
+</script>
+

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="sv-SE">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javscript</title>
+    <link rel="stylesheet" href="../CSS/page-style.css">
+</head>
+<body>
+   <button onclick="document.getElementById('test').innerHTML = 'Första scripttestet'">Öppna ett script här! </button>
+   <button onclick="this.innerHTML = 'Andra scripttestet!'"  style="margin-left: 10px;" >Förändra knappen här!</button>
+   <p id="test"></p> <br>
+    <button onclick="document.getElementById('farenheit').innerHTML =
+     '20 Celcius blir ' + omvandlare_F(20) + ' i farenheit'" style="border-radius: 20px; background-color: red; color: white;">Klicka här för att omvandla celcius till Farenheit </button>
+    <p id="farenheit" style="color: red;"></p>
+    <button onclick="document.getElementById('celcius').innerHTML =
+    '20 farenheit blr ' + omvandlare_c(20) + 'i celcius'" style="border-radius: 20px; background-color: blue; color: white;">Klicka här för att omvandla franheit till celcius</button>
+    <p id="celcius" style="color:blue;"></p>
+   <script>
+       function omvandlare_F(celcius) {
+        var farenheit = celcius * 9 / 5 + 32
+            return farenheit
+       }
+
+    function omvandlare_c(farenheit) {
+        var celcius = (farenheit -32) * 5 / 9
+            return celcius
+    }
+   </script>
+
+<p id="frukt"></p>
+ 
+<!-- Olika former av räkning med siffror-->
+<script>
+    var äpple = 3.271;
+    var päron = 4.215;
+    var banan = 2.993;
+    var orange = 4.633;
+    var total = äpple + päron + banan + orange;
+    var total = total.toFixed(2);
+    
+    document.getElementById('frukt').innerHTML = 'Ett äpple kostar ' + äpple +' kr' + "<br>" +
+    'Ett Päron kostar ' + päron + ' kr' + '<br>' + 'En banan kostar ' + banan + ' kr' + '<br>' +
+    'en apelsin kostar ' + orange + ' kr' + '<br>' + 'Totalt blir kostnaden för dessa frukter: ' + total + ' kr';  
+</script>
+
+
+<!-- Sätta olika typer av datum -->
+<button onclick="this.innerHTML = datum;">Se datum</button>
+<br>
+<p id="dag"></p>
+
+<button onclick="document.getElementById('datum').innerHTML = '100 dagar från idag blir datumet: ' + framtid"> Test </button>
+<p id="datum"></p>
+
+<p id="matte"></p>
+
+
+<script>
+    var datum = new Date();
+    datum = datum.toDateString()
+    
+    var d = new Date();
+    var days = ['Måndag', 'Tisdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lördag', 'Söndag']
+    document.getElementById('dag').innerHTML = 'Dagens veckordag är: ' + days[d.getDay() -1]
+
+    var framtid = new Date();
+    framtid.setDate(d.getDate() + 100)
+    framtid = framtid.toDateString()
+</script>
+
+<!-- Skapa en lottomaskin utifrån randomfunktion -->
+<h3> Kli)cka på knappen nedan för att få ett random nummer</h3>
+<p> Du kommer få en siffra mellan 1-9</p>
+<button onclick="document.getElementById('random').innerHTML = lottomaskin(1, 9)">Prova mig!</button>
+<p id="random"></p>
+<script>
+function lottomaskin(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+</script>
+<br><br><br>
+<!-- Olika former av boolean values -->
+<h2> Nedan handlar om Boolean values </h2>
+<p> Om x = 5 </p><p>  Y = 4: </p>
+<button onclick="document.getElementById('ett').innerHTML = (x == 5);">X är == 5 </button>
+<button onclick="document.getElementById('två').innerHTML = (x == '5'); /* Värde */">X == '5' </button>
+<button onclick="document.getElementById('tre').innerHTML = (x === '5'); /* type & värde */">X === '5'</button> 
+<button onclick="document.getElementById('fyra').innerHTML = (x < 5);">X < 5 </button>
+<button onclick="document.getElementById('fem').innerHTML = (x > 5);">X > 5 </button>
+<button onclick="document.getElementById('sex').innerHTML = (x > 5 && y > 3); /* And tecken */">X > 5 && y > 3</button>
+<button onclick="document.getElementById('sju').innerHTML = (x > 5 || y > 3); /* Or tecken */">X > 5 or Y > 3</button>
+<button onclick="document.getElementById('åtta').innerHTML = !(x > 5); /* Not tecken */">X är inte större än 5</button>
+
+<p id="ett"> </p>
+<p id="två" style="position: absolute;"></p>
+<p id='tre'></p>
+<p id="fyra"></p>
+<p id="fem"></p>
+<p id="sex"></p>
+<p id="sju"></p>
+<p id ='åtta'></p>
+<button onclick="document.getElementById('nio').innerHTML = votable">Tillräckligt gammal?</button>
+<p id="nio"></p>
+<script>
+var x = 4;
+var y = 4;
+var age = 21;
+var votable = (age < 18) ? "too young":"old enough";
+
+</script>
+
+<p id="demo"></p>
+<button onclick="time()">Klicka på knappen</button>
+<p id="demo1"> </p>
+<script>
+var dag;
+
+if (days[d.getDay() -1] == 'Tisdag') {
+    dag = 'Det stämmer att det är tisdag idag'}
+    
+    else {
+    dag = 'Det är inte tisdag idag'
+}
+document.getElementById('demo').innerHTML = dag
+
+function time() {
+    var meddelande;
+    var tid = new Date().getHours(); 
+
+    if (tid < 12) {
+        meddelande = 'God förmiddag'
+    }
+    else if (tid > 12 && tid < 18) {
+        meddelande = 'God eftermiddag'
+    }
+    else if (tid >18 && tid < 22) {
+        meddelande = 'God kväll'
+    }
+    else {
+        meddelande = 'God natt'
+    }
+    document.getElementById('demo1').innerHTML = meddelande
+}
+</script>
+<p id="demo2"></p>
+<p id="demo3"></p>    
+<script>
+    var x = 1;
+    var text;
+
+    switch(x) {
+        case 0:
+        text = 'off'
+        break;
+    
+        case 1:
+        text = 'on'
+        break;
+
+        default:
+        text = 'No Value found'
+        }
+        document.getElementById('demo2').innerHTML = text
+    
+    if (x == 1) {
+        text = 'off'
+    }
+    else {
+        text == 'on'
+    }
+    document.getElementById('demo3').innerHTML = text
+</script>
+
+<!-- switch -->
+<p id="demo4"></p>
+<script>
+
+    var text
+    var fruits = ['Äpple', 'Päron', 'Lingon']
+    switch(fruits = 'Lingon') {
+        case 'Äpple':
+        text = 'Äpple kostar 3.95kr / hg'
+        break;
+
+        case 'Päron':
+        text = 'Päron kostar 2.90kr / hg'
+        break;
+
+        case 'Lingon':
+        text = 'Lingon kostar 10kr /hg'
+        break;
+
+        default:
+            text = 'No match found'
+    }
+    document.getElementById('demo4').innerHTML = text
+
+</script>
+
+<p id="loop"></p>
+<p id="loop2"></p>
+<p id="loop3"></p>
+<p id="loop4"></p>
+<!-- For loops -->
+<script>
+var animals = ['Katt', 'hund', 'gris', 'ödla', 'undelat', 'mus', 'groda', 'kanin'];
+var i;
+var text = '';
+
+for (i = 0; i < animals.length; i++) {
+    text += '<li>' + animals[i] + '</li>' + '<br>';
+}
+document.getElementById('loop').innerHTML = text
+
+var områden = ['Kulladal', 'Sofielund', 'Söderkulla', 'Nydala', 'Hermodsdal', 'Lindängen'];
+var len = områden.length;
+var j = 0;
+var text2 ='';
+for (; j < len; j++) {
+    text2 += områden[j] + '<br>';
+}
+document.getElementById('loop2').innerHTML = text2
+
+var alfabetet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's'
+,'t', 'u', 'v', 'w', 'x', 'y', 'z', 'å', 'ä', 'ö']
+var a = 0;
+var ö = 29
+var text = ''
+
+for(; a < alfabetet.length; a++) {
+    text += 'Bokstaven ' + alfabetet[a] + ' ligger på plats ' + (a+1) + '<br>'; 
+}
+    document.getElementById('loop3').innerHTML = text
+
+var text
+var number = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+for (i=0; i < 10; i++) {
+    text += 'Siffran: ' + number[i] + ' '; 
+}
+document.getElementById('loop4').innerHTML = text;
+</script>
+
+<p id="loop5"></p>
+<p id="loop6"></p>
+<p id="loop7"></p>
+<p id="loop8"></p>
+<script>
+var person = {fname: 'Sebastian', lname: 'Persson', age: 29,};
+var text = '';
+var x;
+
+for (x in person) {
+    text += person[x] + ' ';
+}
+document.getElementById('loop5').innerHTML = text;
+
+/* Om index-order är viktig använd "foreach" i loopen: */
+
+var txt = '';
+var numbers = [45, 10, 20, 1, 4, 7];
+numbers.forEach(min_funktion);
+document.getElementById('loop6').innerHTML = txt;
+
+function min_funktion (value) {
+    txt = txt + value + '<br>';
+    }
+
+let spelkonsoler = ['xbox-one', 'xbox360', 'Gamecube', 'Wii', 'Playstation 4', 'Gameboy Colour'];
+let text1 = '';
+
+for(let p of spelkonsoler) {
+    text1 += p + '<br>';
+}
+document.getElementById('loop7').innerHTML = text1;
+
+var string = 'Sebbe är bäst';
+var txt = '';
+var e;
+
+for (e of string) {
+    txt += e + '<br>';
+} 
+document.getElementById('loop8').innerHTML = txt;
+
+</script>
+
+
+
+<!-- While loops -->
+<p> Låt oss skapa några  loops:</p>
+<p id="loop9"></p>
+<p id="loop10"></p>
+<p id="stopp" style="font-weight: bolder;"></p>
+
+<script>
+var i = 0;
+text = '';
+
+while (i <= 10) {
+    text += 'The number is: ' + i + '<br>';
+    i++;
+}
+document.getElementById('loop9').innerHTML = text;
+
+var i = 0;
+text = '';
+
+while (i < 20) {
+    text += 'Siffran är: ' + i + ', ';
+    i = i + 2;
+
+    if (i == 10) {
+        document.getElementById('stopp').innerHTML = 'Stopp vi har nåt siffran: ' + i + ' i loopen.';
+        break;
+    }
+    else {
+        continue;
+    }
+}
+document.getElementById('loop10').innerHTML = text
+
+</script>
+<p id="x"></p>
+<p id="y"></p>
+<p id="a"></p>
+<p id="b"></p>
+<p id="c"></p>
+<p id="d"></p>
+<p id="e"></p>
+<!--Type conversion -->
+<script>
+var fruits = ['Apple', 'Pear', 'Orange', 'Lime', 'Lemon'];
+document.getElementById('x').innerHTML = 'Är en array: ' + isArray(fruits);
+
+function isArray(MyArray) {
+    return MyArray.constructor.toString().indexOf("Array") > -1
+}
+
+var myDate = new Date();
+document.getElementById('y').innerHTML = 'Är ett dateobjekt: ' + isDate(myDate);
+
+function isDate(myDate) {
+    return myDate.constructor === Date;
+}
+
+var artister = ['Avicii', 'Ingrosso', 'Axwell', 'Alesso', 'Angello'];
+document.getElementById('a').innerHTML = 'är en array: ' + isArray(artister);
+
+function isArray(myarray) {
+    return myarray.constructor === Array;
+}
+
+var str = 'string';
+document.getElementById('b').innerHTML = 'Är en sträng: ' + isString(str);
+
+function isString (mystring) {
+    return mystring.constructor === String;
+}
+
+var int = 50;
+document.getElementById('c').innerHTML = 'Är ett nummer: ' + isNumber(int);
+
+function isNumber(number) {
+    return number.constructor === Number;
+}
+
+bool = true;
+document.getElementById('d').innerHTML = 'Är en boolean: ' + isBool(bool);
+
+function isBool(myBool) {
+    return myBool.constructor === Boolean;
+}
+
+var person = {
+    förnamn: 'Sebastian', 
+    efternamn: 'Persson',
+    Gatuadress: 'Stensjögatan'
+}
+
+document.getElementById('e').innerHTML = 'Är ett objekt: ' + isObject(person);
+
+function isObject(Myobject) {
+    return Myobject.constructor === Object;
+}
+</script>
+<br>
+<p id="f"></p>
+<p id="g"></p>
+<p id="h"></p>
+<p id="i"></p>
+<script>
+
+var b = 422;
+var c = '100';
+document.getElementById('f').innerHTML = String(b) + ' Omvandlad till en sträng';
+b = String(b)
+document.getElementById('g').innerHTML = 'Värdet 422 är nu omvandlad till en sträng: ' + isString(b)  
+document.getElementById('h').innerHTML = Number(c) + ' Omvandlad sträng till ett nummer';
+c = Number('100')
+document.getElementById('i').innerHTML = 'Strängen "100" är nu omvandlad till nummer 100: ' + isNumber(c) 
+
+
+
+</script>
+</body>
+</html>
